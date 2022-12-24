@@ -3,7 +3,7 @@ from os import getenv
 from pathlib import Path
 
 from openai import (
-    openai,
+    api_key,
     Image
 )
 
@@ -12,7 +12,7 @@ DATA_DIR = Path.cwd() / "responses"
 
 DATA_DIR.mkdir(exist_ok=True)
 
-openai.api_key = getenv("OPENAI_API_KEY")
+api_key = getenv("OPENAI_API_KEY")
 
 response = Image.create(
     prompt=PROMPT,
@@ -21,7 +21,10 @@ response = Image.create(
     response_format="b64_json",
 )
 
-file_name = DATA_DIR / f"{PROMPT[:5]}-{response['created']}.json"
+file_name = DATA_DIR / f"openai_image_{response['created']}.json"
 
-with open(file_name, mode="w", encoding="utf-8") as file:
-    dump(response, file)
+
+
+if "__name__" == "main.py":
+    with open(file_name, mode="w", encoding="utf-8") as file:
+        dump(response, file)
