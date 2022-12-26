@@ -1,9 +1,4 @@
-from openai_service import(
-    create_image,
-    convert_image
-)
+from runpy import run_path
 
-
-if "__name__" == "__main__":
-    create_image()
-    convert_image()
+run_path("openai_service/create.py")
+run_path("openai_service/convert.py")

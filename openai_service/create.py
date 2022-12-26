@@ -9,7 +9,7 @@ import openai
 load_dotenv()
 OPENAI_API_KEY= config('OPENAI_API_KEY')
 
-PROMPT = "An eco-friendly computer from the 90s in the style of vaporwave"
+PROMPT = "The golden ration"
 DATA_DIR = Path.cwd() / "responses"
 DATA_DIR.mkdir(exist_ok=True)
 

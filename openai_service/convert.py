@@ -1,9 +1,10 @@
 from json import load
 from base64 import b64decode
 from pathlib import Path
+from openai_service.create import response
 
 DATA_DIR = Path.cwd() / "responses"
-JSON_FILE = DATA_DIR / "openai_image_1671918753.json"
+JSON_FILE = DATA_DIR / f"openai_image_{response['created']}.json"
 IMAGE_DIR = Path.cwd() / "images" / JSON_FILE.stem
 
 IMAGE_DIR.mkdir(parents=True, exist_ok=True)
